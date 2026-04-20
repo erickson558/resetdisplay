@@ -13,6 +13,8 @@ jobs:
   build-and-release:
     name: Build on Windows & Create Release
     runs-on: windows-latest   # Compilar en Windows para producir un .exe nativo
+    permissions:
+      contents: write   # Necesario para crear releases y tags
 
     steps:
       # ── 1. Obtener el código fuente ───────────────────────────────────────
