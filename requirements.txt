@@ -1,0 +1,6 @@
+# requirements.txt
+# Dependencias de ResetDisplay
+# Instalar con: pip install -r requirements.txt
+
+customtkinter>=5.2.0    # GUI moderna sobre tkinter
+pyinstaller>=6.0.0      # Compilador a ejecutable .exe

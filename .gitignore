@@ -1,0 +1,40 @@
+# .gitignore — ResetDisplay
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# ── PyInstaller ──────────────────────────────────────────────────────────────
+# La carpeta build/ y el .spec son artefactos de compilación
+build/
+*.spec
+# El .exe compilado va en la raíz; lo excluimos del repo por tamaño
+ResetDisplay.exe
+
+# ── Archivos generados en runtime ────────────────────────────────────────────
+config.json     # Configuración del usuario (cada quien tiene la suya)
+log.txt         # Logs locales
+
+# ── Entornos virtuales ───────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ── IDE / editores ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Distribución ─────────────────────────────────────────────────────────────
+dist/

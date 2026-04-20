@@ -1,0 +1,37 @@
+{
+    "app_description": "Restarts Windows Explorer to fix display issues",
+
+    "menu_file":         "File",
+    "menu_restart":      "Restart Explorer",
+    "menu_exit":         "Exit",
+    "menu_view":         "View",
+    "menu_theme_dark":   "Dark Theme",
+    "menu_theme_light":  "Light Theme",
+    "menu_help":         "Help",
+    "menu_about":        "About",
+
+    "btn_restart":       "🔄   Restart Explorer",
+    "btn_restarting":    "⏳   Restarting...",
+    "btn_exit":          "Exit",
+
+    "settings_title":    "Settings",
+    "cb_auto_start":     "Auto-run when app opens",
+    "cb_auto_close":     "Auto-close after running",
+    "label_close_time":  "Close after:",
+    "label_seconds":     "seconds",
+    "label_language":    "Language:",
+
+    "status_ready":          "Ready",
+    "status_killing":        "⏳ Terminating explorer.exe...",
+    "status_waiting":        "⏳ Waiting...",
+    "status_starting":       "⏳ Starting explorer.exe...",
+    "status_success":        "✅ Explorer restarted successfully",
+    "status_error_timeout":  "❌ Error: Operation timed out",
+    "status_error_not_found":"❌ Error: Process not found",
+    "status_error_error":    "❌ Unexpected error",
+    "status_closing_in":     "Closing in",
+    "status_lang_changed":   "Language changed. Restart the app to fully apply it.",
+
+    "about_created_by":  "Created by",
+    "about_rights":      "All Rights Reserved"
+}

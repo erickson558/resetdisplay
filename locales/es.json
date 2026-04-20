@@ -1,0 +1,37 @@
+{
+    "app_description": "Reinicia el explorador de Windows para solucionar problemas de pantalla",
+
+    "menu_file":         "Archivo",
+    "menu_restart":      "Reiniciar Explorer",
+    "menu_exit":         "Salir",
+    "menu_view":         "Ver",
+    "menu_theme_dark":   "Tema Oscuro",
+    "menu_theme_light":  "Tema Claro",
+    "menu_help":         "Ayuda",
+    "menu_about":        "Acerca de",
+
+    "btn_restart":       "🔄   Reiniciar Explorer",
+    "btn_restarting":    "⏳   Reiniciando...",
+    "btn_exit":          "Salir",
+
+    "settings_title":    "Configuración",
+    "cb_auto_start":     "Ejecutar automáticamente al abrir",
+    "cb_auto_close":     "Cerrar automáticamente después de ejecutar",
+    "label_close_time":  "Cerrar después de:",
+    "label_seconds":     "segundos",
+    "label_language":    "Idioma:",
+
+    "status_ready":          "Listo",
+    "status_killing":        "⏳ Cerrando explorer.exe...",
+    "status_waiting":        "⏳ Esperando...",
+    "status_starting":       "⏳ Iniciando explorer.exe...",
+    "status_success":        "✅ Explorer reiniciado correctamente",
+    "status_error_timeout":  "❌ Error: Tiempo de espera agotado",
+    "status_error_not_found":"❌ Error: No se encontró el proceso",
+    "status_error_error":    "❌ Error inesperado",
+    "status_closing_in":     "Cerrando en",
+    "status_lang_changed":   "Idioma cambiado. Reinicia la app para aplicarlo completamente.",
+
+    "about_created_by":  "Creado por",
+    "about_rights":      "Derechos Reservados"
+}

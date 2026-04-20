@@ -1,0 +1,88 @@
+# .github/workflows/release.yml
+# GitHub Actions: compila ResetDisplay y crea un release automático
+# en cada push a la rama main.
+
+name: Build & Release
+
+on:
+  push:
+    branches:
+      - main   # Solo se activa en pushes directos a main
+
+jobs:
+  build-and-release:
+    name: Build on Windows & Create Release
+    runs-on: windows-latest   # Compilar en Windows para producir un .exe nativo
+
+    steps:
+      # ── 1. Obtener el código fuente ───────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Configurar Python 3.11 ─────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"   # Cachear dependencias para builds más rápidos
+
+      # ── 3. Instalar dependencias del proyecto ────────────────────────────
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── 4. Leer la versión desde app/__init__.py ──────────────────────────
+      # Extrae __version__ y lo expone como output para usarlo en pasos siguientes
+      - name: Get app version
+        id: version
+        shell: pwsh
+        run: |
+          $version = python -c "import app; print(app.__version__)"
+          echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+          echo "Version detectada: $version"
+
+      # ── 5. Compilar el ejecutable con PyInstaller ─────────────────────────
+      - name: Build executable
+        run: |
+          pyinstaller `
+            --onefile `
+            --windowed `
+            --icon=preferences-desktop-display_36059.ico `
+            --name=ResetDisplay `
+            --distpath=. `
+            --add-data "locales;locales" `
+            --clean `
+            main.py
+
+      # ── 6. Verificar que el .exe se generó correctamente ─────────────────
+      - name: Verify executable exists
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "ResetDisplay.exe")) {
+            Write-Error "ResetDisplay.exe no fue generado"
+            exit 1
+          }
+          echo "ResetDisplay.exe verificado OK"
+
+      # ── 7. Crear release en GitHub con el .exe adjunto ───────────────────
+      # softprops/action-gh-release crea tag + release y adjunta el artefacto
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: ResetDisplay v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## ResetDisplay v${{ steps.version.outputs.VERSION }}
+
+            ### Instalación
+            1. Descarga `ResetDisplay.exe`
+            2. Colócalo en cualquier carpeta
+            3. Ejecuta directamente — no requiere instalación
+
+            ### Cambios
+            Ver historial de commits para detalles de esta versión.
+          files: ResetDisplay.exe
+          draft: false
+          prerelease: false
+          # make_latest: true  # Descomentar para marcar siempre como latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
